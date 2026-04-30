@@ -47,7 +47,7 @@
 ## 项目结构
 
 ```
-vibecoding-refactor/
+swift-refactor/
 ├── SKILL.md
 ├── analysis/
 ├── patterns/

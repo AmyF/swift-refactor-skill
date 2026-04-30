@@ -49,7 +49,7 @@ The skill stores durable state in `.refactor/` so later agents can continue from
 ## Project Layout
 
 ```
-vibecoding-refactor/
+swift-refactor/
 ├── SKILL.md
 ├── analysis/
 ├── patterns/

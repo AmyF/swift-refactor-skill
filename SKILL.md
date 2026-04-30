@@ -1,5 +1,5 @@
 ---
-name: vibecoding-refactor
+name: swift-refactor
 description: Frontier-modern SwiftUI-first iOS 18 and Swift 6.2+ refactoring methodology. Use for SwiftUI app architecture analysis, Xcode or SwiftPM cleanup, Approachable Concurrency readiness, Observation macro migration, SwiftData and App Intents audits, design system reuse, dependency cleanup, and persistent incremental refactoring. This skill is Swift-only and rejects new ObservableObject-based patterns.
 ---
 
