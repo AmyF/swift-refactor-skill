@@ -17,16 +17,23 @@ Tasks are the unit of rollback and verification for SwiftUI-first refactoring.
 3. Record dependencies.
 4. Define the target Swift pattern before editing.
 5. Add the strongest practical verification command.
-6. Add the task to `.refactor/tasks/master-plan.md`.
+6. Add autonomy metadata: `verification_status`, `code_commit`, `state_commit`, `blocked_reason`, and `next_task`.
+7. Add the task to `.refactor/tasks/master-plan.md`.
 
 ## Execute a Task
 
 1. Re-read the related analysis report.
 2. Confirm no dependency task is incomplete.
-3. Make the smallest coherent change.
-4. Verify with SwiftPM or Xcode.
-5. Update the task log.
-6. Move completed tasks to `.refactor/tasks/completed/`.
+3. Record `git status --short` in the task log.
+4. Make the smallest coherent change.
+5. Verify with SwiftPM or Xcode.
+6. Commit task-owned code changes with `task-A001: refactor <short goal>`, if the task changed code.
+7. Update the task log and `.refactor/` status.
+8. Move completed tasks to `.refactor/tasks/completed/`.
+9. Commit `.refactor/` state changes with `task-A001: update refactor state`.
+10. Continue to the next dependency-ready task until blocked.
+
+See [autonomous-execution.md](autonomous-execution.md) for stop conditions, scoped repair, and commit rules.
 
 ## Verification Expectations
 
@@ -50,6 +57,8 @@ For SwiftUI visual changes, verify affected previews, simulator flows, or screen
 - UI and behavior remain unchanged unless explicitly scoped.
 - Deprecated duplicate code is removed.
 - `.refactor/README.md` and the master plan are updated.
+- Code changes are committed, or `code_commit` is recorded as `none` for analysis-only/state-only tasks.
+- `.refactor/` state changes are committed and `state_commit` is recorded.
 
 ## Blocked Task Record
 
@@ -59,4 +68,5 @@ For SwiftUI visual changes, verify affected previews, simulator flows, or screen
 - Reason:
 - Required decision or dependency:
 - Safe next task:
+- Verification status:
 ```

@@ -41,6 +41,9 @@ The recovery entry point. Keep it current after every session.
 - Total progress:
 - Active task:
 - Last verified command:
+- Autonomy: run until blocked
+- Last code commit:
+- Last state commit:
 
 ## Current Architecture Notes
 - App:
@@ -83,6 +86,9 @@ Required fields:
 - Dependencies.
 - Implementation steps.
 - Verification command.
+- Verification status.
+- Code commit and state commit.
+- Blocked reason and safe next task.
 - Rollback notes.
 - Progress log.
 
@@ -94,6 +100,7 @@ Checkpoint record:
 
 - Git ref.
 - Completed tasks.
+- Code and state commit hashes.
 - Verification results.
 - Known risks.
 - Next recommended task.

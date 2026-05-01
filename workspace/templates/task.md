@@ -9,6 +9,11 @@ status: pending | in_progress | blocked | completed | cancelled
 priority: high | medium | low
 phase: {phase number}
 dependencies: []
+verification_status: pending | passed | failed | blocked | skipped
+code_commit: pending
+state_commit: pending
+blocked_reason:
+next_task:
 created: {ISO time}
 updated: {ISO time}
 ---
@@ -40,11 +45,14 @@ updated: {ISO time}
 
 ## Steps
 - [ ] Confirm current behavior
+- [ ] Record `git status --short`
 - [ ] Apply scoped refactor
 - [ ] Remove duplicate or legacy code
 - [ ] Update tests/previews if needed
 - [ ] Verify
+- [ ] Commit task-owned code changes if applicable
 - [ ] Update `.refactor/` state
+- [ ] Commit `.refactor/` state changes
 
 ## Verification
 | Check | Command | Result |
@@ -62,6 +70,15 @@ updated: {ISO time}
 ## Change List
 | File | Operation | Description |
 |------|-----------|-------------|
+
+## Commits
+- Code commit: `pending`
+- State commit: `pending`
+
+## Blocker
+- Verification status: `pending`
+- Blocked reason:
+- Safe next task:
 
 ## Notes
 {Risks, skipped checks, or follow-up}

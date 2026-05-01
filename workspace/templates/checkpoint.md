@@ -11,8 +11,8 @@
 - Language: Swift 6 minimum, Swift 6.2+ readiness preferred
 
 ## Completed Tasks
-| Task | Summary |
-|------|---------|
+| Task | Summary | Code Commit | State Commit |
+|------|---------|-------------|--------------|
 
 ## Verification
 | Command | Result | Notes |

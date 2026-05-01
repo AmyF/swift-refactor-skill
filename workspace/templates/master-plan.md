@@ -15,6 +15,9 @@
 - Current phase:
 - Overall progress:
 - Last verification:
+- Autonomy: run until blocked
+- Last code commit:
+- Last state commit:
 
 ## Phase 0: Project Partition
 - [ ] Containers, targets, schemes
@@ -31,12 +34,12 @@
 - [ ] Async/data flow identified
 
 ## Phase 2: Architecture Tasks
-| ID | Task | Priority | Status | Depends On |
-|----|------|----------|--------|------------|
+| ID | Task | Priority | Status | Verification | Code Commit | State Commit | Depends On |
+|----|------|----------|--------|--------------|-------------|--------------|------------|
 
 ## Phase 3: Module Tasks
-| ID | Task | Feature | Priority | Status | Depends On |
-|----|------|---------|----------|--------|------------|
+| ID | Task | Feature | Priority | Status | Verification | Code Commit | State Commit | Depends On |
+|----|------|---------|----------|--------|--------------|-------------|--------------|------------|
 
 ## Checkpoints
 | Checkpoint | Git Ref | Verification | Notes |

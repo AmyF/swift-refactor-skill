@@ -9,7 +9,8 @@ Use this when resuming an existing `.refactor/` workspace.
 3. Read all files in `.refactor/tasks/active/`.
 4. Read the latest log in `.refactor/logs/` if the next action is unclear.
 5. Confirm the project still targets iOS 18 and remains Swift 6.2-ready.
-6. Report status and continue with the safest active task.
+6. Record `git status --short`.
+7. Continue with the safest dependency-ready task using [autonomous-execution.md](autonomous-execution.md).
 
 ## Status Report Template
 
@@ -39,6 +40,10 @@ Use this when resuming an existing `.refactor/` workspace.
 ### Verification
 - Last command:
 - Result:
+
+### Commits
+- Last code commit:
+- Last state commit:
 ```
 
 ## Recovery Safety
@@ -46,4 +51,4 @@ Use this when resuming an existing `.refactor/` workspace.
 - Do not restart analysis unless the persisted analysis is missing or stale.
 - Do not introduce legacy state patterns.
 - Do not change UI behavior without an explicit task.
-- If active work is ambiguous, continue with read-only analysis and update the recovery report.
+- If active work is ambiguous, continue with read-only analysis, update the recovery report, and stop only when no safe eligible task can be selected.

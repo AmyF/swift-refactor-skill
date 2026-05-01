@@ -14,6 +14,7 @@
 - Design System 复用：View、ViewModifier、Style、Asset、颜色、字体、间距
 - Xcode 与 SwiftPM target 依赖清理
 - 通过 `.refactor/` 支持可恢复的增量重构
+- 无人值守任务执行：自动运行到阻塞点，并为每个任务创建本地提交
 
 ## 固定原则
 
@@ -29,6 +30,7 @@
 
 ```text
 请按照 frontier-modern Swift 方法论重构这个项目。
+运行自动 Swift 重构循环，直到遇到阻塞。
 分析这个 iOS 18 Swift 6.2-ready 项目的架构。
 清理重复 SwiftUI View，并迁移遗留状态管理到 Observation。
 审计 SwiftData、Swift Testing、App Intents 与 Approachable Concurrency readiness。
@@ -42,7 +44,7 @@
 -> 模块深度分析 -> 执行重构 -> 最终验证
 ```
 
-所有长期状态保存在 `.refactor/`，后续 Agent 可以从上次中断点继续。
+所有长期状态保存在 `.refactor/`，后续 Agent 可以从上次中断点继续。执行阶段默认自动运行到阻塞点，并分别提交任务代码变更与 `.refactor/` 状态更新。
 
 ## 项目结构
 
@@ -62,6 +64,7 @@ swift-refactor/
 - [问题分类](patterns/vibe-coding-problems.md) - Swift 专项问题
 - [重构模式](patterns/refactor-patterns.md) - Swift 标准修复模式
 - [工作区规范](workspace/workspace-spec.md) - `.refactor/` 持久化格式
+- [自动执行](workspace/autonomous-execution.md) - 运行到阻塞点的任务循环与提交协议
 
 ## 许可证
 

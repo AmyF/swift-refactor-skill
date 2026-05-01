@@ -1,6 +1,6 @@
 ---
 name: swift-refactor
-description: Frontier-modern SwiftUI-first iOS 18 and Swift 6.2+ refactoring methodology. Use for SwiftUI app architecture analysis, Xcode or SwiftPM cleanup, Approachable Concurrency readiness, Observation macro migration, SwiftData and App Intents audits, design system reuse, dependency cleanup, and persistent incremental refactoring. This skill is Swift-only and rejects new ObservableObject-based patterns.
+description: Frontier-modern SwiftUI-first iOS 18 and Swift 6.2+ refactoring methodology. Use for SwiftUI app architecture analysis, Xcode or SwiftPM cleanup, Approachable Concurrency readiness, Observation macro migration, SwiftData and App Intents audits, design system reuse, dependency cleanup, autonomous run-until-blocked execution, local per-task commits, and persistent incremental refactoring. This skill is Swift-only and rejects new ObservableObject-based patterns.
 ---
 
 # Frontier-Modern SwiftUI Refactoring Methodology
@@ -18,6 +18,7 @@ A systematic workflow for refactoring AI-generated SwiftUI apps without changing
 - Preserve functionality, UI appearance, interaction behavior, and external APIs unless the user explicitly asks otherwise.
 - Complete analysis before refactoring. Do not start implementation from a hunch.
 - Keep all refactoring work traceable and independently rollbackable.
+- When tasks exist, run autonomously until blocked and commit every completed task as described in [workspace/autonomous-execution.md](workspace/autonomous-execution.md).
 
 ## Modern Swift Defaults
 
@@ -38,9 +39,21 @@ When the user says "continue refactoring" or a `.refactor/` directory exists:
 2. Read `.refactor/tasks/master-plan.md`.
 3. Read active task files in `.refactor/tasks/active/`.
 4. Read the latest session log if the next action is unclear.
-5. Report current status, active task, blockers, and the next recommended step.
+5. Continue with the next eligible task using the autonomous execution loop.
 
 Use persisted files as the source of truth, not conversation memory.
+
+## Autonomous Execution
+
+Default to run until blocked. Do not wait for human supervision between dependency-ready tasks when the next safe action is derivable from `.refactor/`.
+
+Use [workspace/autonomous-execution.md](workspace/autonomous-execution.md) for:
+
+- Task eligibility and ordering.
+- Stop conditions.
+- Bounded verification repair.
+- Local per-task code and state commits.
+- Blocked-task handling and safe continuation.
 
 ## Workflow
 
@@ -164,7 +177,7 @@ Task order:
 3. Migrate legacy state patterns to Observation macros.
 4. Replace duplicate local Views, Modifiers, styles, and services with shared resources.
 5. Remove obsolete compatibility code.
-6. Verify after each task and update `.refactor/` state.
+6. Verify after each task, commit task-owned code changes, update `.refactor/` state, commit the state, then continue until blocked.
 
 Use [patterns/refactor-patterns.md](patterns/refactor-patterns.md) and [strategies/dependency-sorting.md](strategies/dependency-sorting.md) to plan execution.
 
@@ -236,6 +249,7 @@ Before Phase 4 starts:
 - [strategies/partition-strategies.md](strategies/partition-strategies.md)
 - [strategies/parallel-execution.md](strategies/parallel-execution.md)
 - [workspace/workspace-spec.md](workspace/workspace-spec.md)
+- [workspace/autonomous-execution.md](workspace/autonomous-execution.md)
 - [workspace/task-lifecycle.md](workspace/task-lifecycle.md)
 - [workspace/session-management.md](workspace/session-management.md)
 - [workspace/recovery-guide.md](workspace/recovery-guide.md)

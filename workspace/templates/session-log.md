@@ -23,6 +23,10 @@
 | xcodebuild test | | |
 | UI verification | | |
 
+## Commits
+| Task | Code Commit | State Commit |
+|------|-------------|--------------|
+
 ## Findings
 - Observation migration:
 - Swift 6.2+ concurrency:
